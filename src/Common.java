@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-//共通のクラス（いろんなところで使う？）
+//共通のクラス
 public class Common {
 
     // 再ゲームするかどうか
