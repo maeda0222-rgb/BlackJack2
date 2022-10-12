@@ -12,32 +12,35 @@ public class Game {
             final var player = new Player("プレイヤー");
             //ディーラーの初期カード二枚
             dealer.init();
-            //プレイヤーの初期カード二枚
-            player.init();
             //ディーラートータル
             dealer.action();
+            //プレイヤーの初期カード二枚
+            player.init();
             //プレイヤートータル
             player.action();
             //勝敗判定
             getWinner(dealer,player).ifPresentOrElse(
                     winner -> System.out.println(winner.name + "の勝ち"),
                     () -> System.out.println("ドロー"));
-                    if(Common.question("もう一度しますか？「はい」or「いいえ」")) {
-                        System.out.println("----------------");
-                        continue;
-                    }
-                    break;
+            if(Common.question("もう一度しますか？「はい」or「いいえ」")) {
+                System.out.println("----------------");
+                continue;
+             }
+             break;
         }
+        System.out.println("終了しました");
 
     }
     
     public static Optional<Gamer> getWinner(Dealer dealer, Player player){
         //プレイヤーオーバー
         if(player.isBust()) {
+            System.out.println("あなたがバーストしました");
             return Optional.of(dealer);
         }
         //ディーラーオーバー
         if(dealer.isBust()) {
+            System.out.println("ディーラーがバーストしました");
             return Optional.of(player);
         }
         //ディーラーの勝ち
